@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Scripts Oracle - Grid Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-database"></i> Control de Scripts Oracle</h1>
+                <p>Sistema de Gestión con Grid Interactivo + SQLite</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="addScriptBtn">
+                    <i class="fas fa-plus"></i> Agregar Script
+                </button>
+                <button class="btn btn-success" id="loadSampleBtn">
+                    <i class="fas fa-clipboard-list"></i> Datos Ejemplo
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card pending">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="pendingCount">0</div>
+                    <div class="stat-label">Pendientes</div>
+                </div>
+            </div>
+            
+            <div class="stat-card applied">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="appliedCount">0</div>
+                    <div class="stat-label">Aplicados</div>
+                </div>
+            </div>
+            
+            <div class="stat-card error">
+                <div class="stat-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="errorCount">0</div>
+                    <div class="stat-label">Con Errores</div>
+                </div>
+            </div>
+            
+            <div class="stat-card total">
+                <div class="stat-icon">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-label">Total</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar scripts...">
+                </div>
+                
+                <div class="filter-group">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">Todos los estados</option>
+                        <option value="pending">Pendientes</option>
+                        <option value="applied">Aplicados</option>
+                        <option value="error">Con Errores</option>
+                    </select>
+                    
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">Todas las categorías</option>
+                        <option value="BD">Base de Datos</option>
+                        <option value="Alters">Alters</option>
+                        <option value="Updates">Updates</option>
+                        <option value="Vistas">Vistas</option>
+                        <option value="Permisos">Permisos</option>
+                        <option value="Scripts ID">Scripts ID</option>
+                    </select>
+                    
+                    <select id="priorityFilter" class="filter-select">
+                        <option value="">Todas las prioridades</option>
+                        <option value="high">Alta</option>
+                        <option value="medium">Media</option>
+                        <option value="low">Baja</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-secondary" id="clearFiltersBtn">
+                    <i class="fas fa-times"></i> Limpiar Filtros
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <p>Cargando scripts...</p>
+        </div>
+
+        <!-- Scripts Grid -->
+        <main class="scripts-grid" id="scriptsGrid">
+            <!-- Las tarjetas se generarán dinámicamente -->
+        </main>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">
+                <i class="fas fa-folder-open"></i>
+            </div>
+            <h3>No se encontraron scripts</h3>
+            <p>Agrega tu primer script o carga datos de ejemplo para comenzar.</p>
+            <button class="btn btn-primary" onclick="openAddModal()">
+                <i class="fas fa-plus"></i> Agregar Script
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar scripts -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Agregar Nuevo Script</h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form class="modal-form" id="scriptForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="scriptName">
+                            <i class="fas fa-file-code"></i> Nombre del Script
+                        </label>
+                        <input type="text" id="scriptName" required placeholder="Ej: create_users_table.sql">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="scriptCategory">
+                            <i class="fas fa-tag"></i> Categoría
+                        </label>
+                        <select id="scriptCategory" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="BD">Base de Datos</option>
+                            <option value="Alters">Alters</option>
+                            <option value="Updates">Updates</option>
+                            <option value="Vistas">Vistas</option>
+                            <option value="Permisos">Permisos</option>
+                            <option value="Scripts ID">Scripts ID</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="scriptPath">
+                        <i class="fas fa-folder"></i> Ruta del Script
+                    </label>
+                    <input type="text" id="scriptPath" placeholder="C:\\Scripts\\Oracle\\...">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="scriptPriority">
+                            <i class="fas fa-exclamation"></i> Prioridad
+                        </label>
+                        <select id="scriptPriority" required>
+                            <option value="high">Alta</option>
+                            <option value="medium">Media</option>
+                            <option value="low">Baja</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="scriptStatus">
+                            <i class="fas fa-info-circle"></i> Estado
+                        </label>
+                        <select id="scriptStatus" required>
+                            <option value="pending">Pendiente</option>
+                            <option value="applied">Aplicado</option>
+                            <option value="error">Error</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="scriptResponsible">
+                        <i class="fas fa-user"></i> Responsable
+                    </label>
+                    <input type="text" id="scriptResponsible" value="DBA Team">
+                </div>
+                
+                <div class="form-group">
+                    <label for="scriptNotes">
+                        <i class="fas fa-sticky-note"></i> Observaciones
+                    </label>
+                    <textarea id="scriptNotes" rows="3" placeholder="Notas adicionales sobre el script..."></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="saveBtn">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
