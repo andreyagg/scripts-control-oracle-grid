@@ -6,79 +6,70 @@
 }
 
 :root {
-    /* 🎨 Colores principales */
-    --primary-color: #0A5E2A; /* Verde oscuro */
-    --primary-dark: #07421E;
-    --primary-light: #1F7A3C;
-
-    --accent-color: #B3C50E; /* Verde lima */
-    --accent-dark: #8F9E0A;
-    --accent-light: #CDE51A;
-
-    --neutral-color: #CDCDCD; /* Gris claro */
-    --neutral-dark: #A8A8A8;
-    --neutral-light: #E5E5E5;
-
-    /* ✅ Colores de estado */
+    /* Colores principales corporativos */
+    --primary-color: #0A5E2A;       /* Verde corporativo oscuro */
+    --primary-dark: #06411E;        /* Verde más oscuro */
+    --secondary-color: #B3C50E;     /* Verde lima */
+    --secondary-dark: #8A990B;      /* Verde lima más oscuro */
+    --accent-color: #CDCDCD;        /* Gris corporativo */
+    
+    /* Estados */
     --success-color: #0A5E2A;
-    --success-dark: #07421E;
+    --success-dark: #06411E;
     --warning-color: #B3C50E;
-    --warning-dark: #8F9E0A;
-    --danger-color: #e74c3c;
-    --danger-dark: #c0392b;
-
-    /* Estados específicos */
-    --pending-color: var(--warning-color);
-    --applied-color: var(--success-color);
-    --error-color: var(--danger-color);
-
-    /* 🖤 Escala de grises */
-    --gray-50: #f9f9f9;
-    --gray-100: #f0f0f0;
-    --gray-200: #e0e0e0;
-    --gray-300: #cdcdcd;
-    --gray-400: #b0b0b0;
-    --gray-500: #8a8a8a;
-    --gray-600: #6d6d6d;
-    --gray-700: #4f4f4f;
-    --gray-800: #333333;
-    --gray-900: #1a1a1a;
-
-    /* 🌫 Sombras suaves */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
+    --warning-dark: #8A990B;
+    --danger-color: #C0392B;
+    --danger-dark: #922B21;
+    
+    /* Grises */
+    --gray-50: #F5F5F5;
+    --gray-100: #E0E0E0;
+    --gray-200: #CDCDCD;
+    --gray-300: #B0B0B0;
+    --gray-400: #8C8C8C;
+    --gray-500: #666666;
+    --gray-600: #4D4D4D;
+    --gray-700: #333333;
+    --gray-800: #1F1F1F;
+    --gray-900: #0F0F0F;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
     --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-
-    /* ⚡ Transiciones */
-    --transition-fast: 150ms ease;
-    --transition-normal: 300ms ease;
-    --transition-slow: 500ms ease;
-
-    /* 📏 Espaciado */
+    
+    /* Transiciones */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Espaciado */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
-
-    /* 🔲 Bordes */
-    --border-radius-sm: 4px;
+    
+    /* Bordes */
+    --border-radius-sm: 6px;
     --border-radius-md: 8px;
     --border-radius-lg: 12px;
-    --border-radius-xl: 20px;
+    --border-radius-xl: 16px;
 }
 
-
-/* Estilos base */
+/* Estilo corporativo del body */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: #E8F3EC; /* Verde muy claro, suave y corporativo */
     min-height: 100vh;
-    color: var(--gray-800);
+    color: var(--gray-900);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
+
 
 .app-container {
     max-width: 1400px;
