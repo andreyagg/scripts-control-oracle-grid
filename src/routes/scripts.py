@@ -282,10 +282,3 @@ def import_scripts():
             'error': str(e)
         }), 500
 
-@scripts_bp.route('/scripts/sample-data', methods=['POST'])
-def load_sample_data():
-    return jsonify({
-        'success': False,
-        'error': 'Carga de datos de ejemplo deshabilitada'
-    }), 403
-
