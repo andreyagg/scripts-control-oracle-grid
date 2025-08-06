@@ -38,7 +38,6 @@ const elements = {
     
     // Buttons
     addScriptBtn: document.getElementById('addScriptBtn'),
-    //loadSampleBtn: document.getElementById('loadSampleBtn'),
     clearFiltersBtn: document.getElementById('clearFiltersBtn'),
     modalClose: document.getElementById('modalClose'),
     cancelBtn: document.getElementById('cancelBtn'),
@@ -299,21 +298,7 @@ const Scripts = {
         }
     },
     
-   // async loadSampleData() {
-   //     try {
-   //         const response = await API.post('/scripts/sample-data');
-   //         
-   //         if (response.success) {
-   //             Toast.show(`${response.imported_count} scripts de ejemplo cargados`, 'success');
-   //              await this.loadAll();
-   //         } else {
-   //            Toast.show(response.error || 'Error al cargar datos de ejemplo', 'error');
-   //         }
-   //     } catch (error) {
-   //        Toast.show('Error de conexión al cargar datos de ejemplo', 'error');
-   //    }
-   // },
-    
+  
     applyFilters() {
         const { search, status, category, priority } = AppState.filters;
         
@@ -485,7 +470,6 @@ function initEventListeners() {
         Modal.open();
     });
     
-   // elements.loadSampleBtn.addEventListener('click', Scripts.loadSampleData);
     
     elements.clearFiltersBtn.addEventListener('click', () => {
         elements.searchInput.value = '';
