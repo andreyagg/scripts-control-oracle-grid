@@ -473,7 +473,7 @@ const Modal = {
         AppState.currentEditId = null;
         elements.modalTitle.textContent = 'Agregar Nuevo Script';
         elements.scriptForm.reset();
-        elements.scriptResponsible.value = 'DBA Team';
+        elements.scriptResponsible.value = 'DBA';
     }
 };
 
@@ -485,7 +485,7 @@ function initEventListeners() {
         Modal.open();
     });
     
-    elements.loadSampleBtn.addEventListener('click', Scripts.loadSampleData);
+   // elements.loadSampleBtn.addEventListener('click', Scripts.loadSampleData);
     
     elements.clearFiltersBtn.addEventListener('click', () => {
         elements.searchInput.value = '';
