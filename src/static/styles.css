@@ -6,60 +6,70 @@
 }
 
 :root {
-    /* Colores principales */
-    --primary-color: #3498db;
-    --primary-dark: #2980b9;
-    --success-color: #27ae60;
-    --success-dark: #229954;
-    --warning-color: #f39c12;
-    --warning-dark: #e67e22;
+    /* 🎨 Colores principales */
+    --primary-color: #0A5E2A; /* Verde oscuro */
+    --primary-dark: #07421E;
+    --primary-light: #1F7A3C;
+
+    --accent-color: #B3C50E; /* Verde lima */
+    --accent-dark: #8F9E0A;
+    --accent-light: #CDE51A;
+
+    --neutral-color: #CDCDCD; /* Gris claro */
+    --neutral-dark: #A8A8A8;
+    --neutral-light: #E5E5E5;
+
+    /* ✅ Colores de estado */
+    --success-color: #0A5E2A;
+    --success-dark: #07421E;
+    --warning-color: #B3C50E;
+    --warning-dark: #8F9E0A;
     --danger-color: #e74c3c;
     --danger-dark: #c0392b;
-    --secondary-color: #6c757d;
-    --secondary-dark: #5a6268;
-    
-    /* Estados */
-    --pending-color: #f39c12;
-    --applied-color: #27ae60;
-    --error-color: #e74c3c;
-    
-    /* Grises */
-    --gray-50: #f8f9fa;
-    --gray-100: #e9ecef;
-    --gray-200: #dee2e6;
-    --gray-300: #ced4da;
-    --gray-400: #adb5bd;
-    --gray-500: #6c757d;
-    --gray-600: #495057;
-    --gray-700: #343a40;
-    --gray-800: #212529;
-    --gray-900: #1a1e21;
-    
-    /* Sombras */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+    /* Estados específicos */
+    --pending-color: var(--warning-color);
+    --applied-color: var(--success-color);
+    --error-color: var(--danger-color);
+
+    /* 🖤 Escala de grises */
+    --gray-50: #f9f9f9;
+    --gray-100: #f0f0f0;
+    --gray-200: #e0e0e0;
+    --gray-300: #cdcdcd;
+    --gray-400: #b0b0b0;
+    --gray-500: #8a8a8a;
+    --gray-600: #6d6d6d;
+    --gray-700: #4f4f4f;
+    --gray-800: #333333;
+    --gray-900: #1a1a1a;
+
+    /* 🌫 Sombras suaves */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
     --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
-    
-    /* Transiciones */
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
-    
-    /* Espaciado */
+
+    /* ⚡ Transiciones */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* 📏 Espaciado */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
-    
-    /* Bordes */
-    --border-radius-sm: 6px;
+
+    /* 🔲 Bordes */
+    --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 12px;
-    --border-radius-xl: 16px;
+    --border-radius-xl: 20px;
 }
+
 
 /* Estilos base */
 body {
